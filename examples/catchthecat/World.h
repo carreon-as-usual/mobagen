@@ -1,11 +1,15 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+#pragma once
+
 #include "Cat.h"
 #include "Catcher.h"
 #include "scene/GameObject.h"
 #include "math/Point2D.h"
 #include "Random.h"
+#include "SDL_render.h"
+
 #include <bitset>
 #include <iostream>
 #include <vector>

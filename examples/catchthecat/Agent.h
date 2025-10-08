@@ -1,6 +1,8 @@
 #ifndef AGENT_H
 #define AGENT_H
 #include "math/Point2D.h"
+
+#include <unordered_map>
 #include <vector>
 
 class World;
@@ -11,7 +13,7 @@ public:
 
   virtual Point2D Move(World*) = 0;
 
-  std::vector<Point2D> generatePath(World* w);
+  std::vector<Point2D> generatePath(World* world);
 };
 
 #endif  // AGENT_H
