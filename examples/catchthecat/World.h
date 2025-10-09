@@ -12,6 +12,7 @@
 
 #include <bitset>
 #include <iostream>
+#include <utility>
 #include <vector>
 
 class World : GameObject {
@@ -68,6 +69,9 @@ public:
 
   // returns the side of the map
   int getWorldSideSize();
+
+  void setWorldState(std::vector<bool> wos) { worldState = std::move(wos); }
+  std::vector<bool> getWorldState() { return worldState; }
 
   // the top left (x,y) is (-side/2,-side/2) the center is on (0,0);
   // get the content of a given point
