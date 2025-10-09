@@ -69,10 +69,6 @@ public:
 
   // returns the side of the map
   int getWorldSideSize();
-
-  void setWorldState(std::vector<bool> wos) { worldState = std::move(wos); }
-  std::vector<bool> getWorldState() { return worldState; }
-
   // the top left (x,y) is (-side/2,-side/2) the center is on (0,0);
   // get the content of a given point
   bool getContent(const Point2D& p) const { return worldState[(p.y + sideSize / 2) * (sideSize) + p.x + sideSize / 2]; }
@@ -80,6 +76,8 @@ public:
   // the top left (x,y) is (-5,-5) the center is on (0,0);
   // get the content of a given
   bool getContent(const int& x, const int& y) const { return worldState[(y + sideSize / 2) * (sideSize) + x + sideSize / 2]; }
+
+  World* simulateWorld();
 
   // print the world state
   void print();

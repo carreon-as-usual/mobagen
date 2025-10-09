@@ -13,23 +13,13 @@ namespace {
   std::vector<Point2D> getVisitableNeighbors(World* world, const Point2D& current, const std::unordered_map<Point2D, bool>& visited,
                                                     const std::unordered_set<Point2D>& frontierSet) {
     auto outNeighbors = vector<Point2D>();
-    if (world->isValidPosition(Point2D(current.x - 1, current.y)) && getPosition(World::W(current), world, visited, frontierSet)) {
-      outNeighbors.push_back(World::W(current));
-    }
-    if (world->isValidPosition(Point2D(current.x + 1, current.y)) && getPosition(World::E(current), world, visited, frontierSet)) {
-      outNeighbors.push_back(World::E(current));
-    }
-    if (world->isValidPosition(Point2D(current.x - 1, current.y - 1)) && getPosition(World::NW(current), world, visited, frontierSet)) {
-      outNeighbors.push_back(World::NW(current));
-    }
-    if (world->isValidPosition(Point2D(current.x - 1, current.y + 1)) && getPosition(World::SW(current), world, visited, frontierSet)) {
-      outNeighbors.push_back(World::SW(current));
-    }
-    if (world->isValidPosition(Point2D(current.x + 1, current.y + 1)) && getPosition(World::SE(current), world, visited, frontierSet)) {
-      outNeighbors.push_back(World::SE(current));
-    }
-    if (world->isValidPosition(Point2D(current.x + 1, current.y - 1)) && getPosition(World::NE(current), world, visited, frontierSet)) {
-      outNeighbors.push_back(World::NE(current));
+    auto preCheckNeighbors = world->neighbors(current);
+    for(Point2D neighbor : preCheckNeighbors)
+    {
+      if(world->isValidPosition(neighbor) && getPosition(neighbor, world, visited, frontierSet))
+      {
+        outNeighbors.push_back(neighbor);
+      }
     }
     return outNeighbors;
   }
