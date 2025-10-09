@@ -2,6 +2,7 @@
 #include "World.h"
 
 Point2D Catcher::Move(World* world) {
+  auto path = generatePath(tempWorld);
   if(!path.empty())
   {
   return path[0];
